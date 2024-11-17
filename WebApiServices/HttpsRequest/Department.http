@@ -1,0 +1,31 @@
+﻿@WebApiServices_HostAddress = https://localhost:7171
+
+GET {{WebApiServices_HostAddress}}/api/Department/GetDepartment
+
+###
+
+GET {{WebApiServices_HostAddress}}/api/Department/GetDepartment2
+
+###
+
+POST {{WebApiServices_HostAddress}}/api/Department/AddDepartment
+Content-Type: application/json
+
+{
+  "departmentID": 3,
+  "departmentName": "Support3"
+}
+
+###
+
+PUT {{WebApiServices_HostAddress}}/api/Department/UpdateDepartment
+Content-Type: application/json
+
+{
+  "departmentID": 1,
+  "departmentName": "Support1"
+}
+
+###
+
+DELETE {{WebApiServices_HostAddress}}/api/Department/DeleteDepartment/1

@@ -1,0 +1,5 @@
+﻿@WebApiServices_HostAddress = https://localhost:7171
+
+GET {{WebApiServices_HostAddress}}/weatherforecast
+
+###
