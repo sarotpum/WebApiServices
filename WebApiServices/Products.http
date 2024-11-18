@@ -1,0 +1,31 @@
+﻿@WebApiServices_HostAddress = https://localhost:7171
+
+GET {{WebApiServices_HostAddress}}/api/Products/GetProducts
+
+###
+
+POST {{WebApiServices_HostAddress}}/api/Products/AddProduct
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "Product1",
+  "description": "Product1 Description",
+  "price": "10"
+}
+
+###
+ 
+PUT {{WebApiServices_HostAddress}}/api/Department/UpdateProduct
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Product1",
+  "description": "Product1 Description",
+  "price": "10"
+}
+
+###
+
+DELETE {{WebApiServices_HostAddress}}/api/Department/DeleteProduct/1

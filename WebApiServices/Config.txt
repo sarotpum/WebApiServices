@@ -1,0 +1,29 @@
+﻿dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet ef
+dotnet tool install --global dotnet-ef
+dotnet add package Microsoft.EntityFrameworkCore.Identity.EntityFrameworkCore
+
+dotnet ef migrations add InitialMigration --output-dir "Data/Migrations"
+dotnet ef database update
+
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+
+
+---------------------------------------------------------------
+
+// Add-Migration "Initial Create"
+// Update-Database
+ 
+//Add-Migration MyMigration -context DataContextName
+//update-database -Context YourContext
+
+
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+
+---------------------------------------------------------------
+dotnet watch run
+
+
