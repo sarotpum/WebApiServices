@@ -1,0 +1,46 @@
+﻿@WebApiServices_HostAddress = https://localhost:7171
+
+GET {{WebApiServices_HostAddress}}/api/employee/GetEmployee
+
+###
+ 
+GET {{WebApiServices_HostAddress}}/api/employee/GetEmployee2
+
+###
+
+GET {{WebApiServices_HostAddress}}/api/employee/GetAllDepartmentNames
+
+###
+POST {{WebApiServices_HostAddress}}/api/employee/AddEmployee
+Content-Type: application/json
+
+{
+  "employeeId": 5,
+  "employeeName": "Test5",
+  "department": "Support1",
+  "dateOfJoining": "2020-06-01",
+  "photoFileName": "Joker.jpg"
+}
+
+###
+ 
+PUT {{WebApiServices_HostAddress}}/api/employee/UpdateEmployee
+Content-Type: application/json
+
+{
+  "employeeId": 5,
+  "employeeName": "Test1",
+  "department": "Support1",
+  "dateOfJoining": "2020-06-01",
+  "photoFileName": "Joker.jpg"
+}
+
+###
+
+DELETE {{WebApiServices_HostAddress}}/api/employee/DeleteEmployee/5
+ 
+###
+
+POST {{WebApiServices_HostAddress}}/api/employee/SaveFile
+Content-Type: application/json
+ 

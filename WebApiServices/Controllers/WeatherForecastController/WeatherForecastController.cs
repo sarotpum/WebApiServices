@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApiServices.Controllers
+namespace WebApiServices.Controllers.WeatherForecastController
 {
     [ApiController]
     [Route("[controller]")]

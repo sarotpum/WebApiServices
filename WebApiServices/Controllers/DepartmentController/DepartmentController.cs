@@ -30,7 +30,7 @@ namespace WebApiServices.Controllers.DepartmentController
         }
 
         [HttpGet("GetDepartment2")]
-        public IActionResult GetDepartment2()
+        public async Task<IActionResult> GetDepartment2()
         {
             if (!ModelState.IsValid)
             {
@@ -38,7 +38,7 @@ namespace WebApiServices.Controllers.DepartmentController
                    ModelState.Values.SelectMany(s => s.Errors.Select(ss => ss.ErrorMessage)).ToArray());
             }
 
-            var result = _viewModel.GetDepartment();
+            var result = await _viewModel.GetDepartment2();
             return Ok(result);
         }
 

@@ -1,4 +1,5 @@
 ﻿using SharedService.Models.DepartmentModel;
+using SharedService.Models.Employees;
 
 namespace SharedService.Implements
 {
@@ -35,6 +36,52 @@ namespace SharedService.Implements
         {
             return $@"  DELETE FROM Department 
                         WHERE DepartmentId = '" + id + "' ";
+        }
+
+        #endregion
+
+        #region EmployeeController
+
+        public static string GetEmployee()
+        {
+            return $@"  SELECT
+                            EmployeeId,
+                            EmployeeName,
+                            Department,
+                            DateOfJoining,
+                            PhotoFileName
+                        FROM Employee
+                     ";
+        }
+
+        public static string AddEmployee(EmployeeModel value)
+        {
+            return $@"  INSERT INTO Employee
+                            (EmployeeName, Department, DateOfJoining, PhotoFileName)
+                        VALUES
+                            (
+                                '" + value.EmployeeName + @"'
+                                ,'" + value.Department + @"'
+                                ,CONVERT(DATETIME, '" + value.DateOfJoining + @"', 102)
+                                ,'" + value.PhotoFileName + @"'
+                            )
+                     ";
+        }
+
+        public static string UpdateEmployee(EmployeeModel value)
+        {
+            return $@"  UPDATE Employee SET
+                            EmployeeName = '" + value.EmployeeName + @"'
+                            ,Department = '" + value.Department + @"'
+                            ,DateOfJoining = '" + value.DateOfJoining + @"'
+                            ,PhotoFileName = '" + value.PhotoFileName + @"'
+                            where EmployeeId = '" + value.EmployeeId + @"' 
+                     ";
+        }
+
+        public static string DeleteEmployee(int id)
+        {
+            return $@"  DELETE FROM Employee WHERE EmployeeId = '" + id + "' ";
         }
 
         #endregion

@@ -1,10 +1,14 @@
+using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Serialization;
 using Serilog;
 using SharedService.LogProvider.Implement;
 using SharedService.LogProvider.Interface;
 using SharedService.Models;
+using System.Globalization;
 using WebApiServices.BussinessLogic;
 using WebApiServices.Middleware;
+
+CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,7 +52,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//Add support to logging request with SERILOG
+// Add support to logging request with SERILOG
 app.UseSerilogRequestLogging();
 
 app.UseMiddleware<RequestLoggingMiddleware>();
@@ -59,11 +63,21 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Add Photo (Employee)
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+                  Path.Combine(Directory.GetCurrentDirectory(), "Photos")),
+    RequestPath = "/Photos"
+});
+
 app.Run();
  
 void AddScopedConfig(WebApplicationBuilder builder)
 {
     builder.Services.AddScoped<DepartmentLogic>();
+    builder.Services.AddScoped<EmployeeLogic>();
+
     builder.Services.AddScoped<ILoggerService, LoggerServiceImpl>();
 }
  
