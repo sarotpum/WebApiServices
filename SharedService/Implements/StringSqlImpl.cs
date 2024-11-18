@@ -1,5 +1,6 @@
 ﻿using SharedService.Models.DepartmentModel;
 using SharedService.Models.Employees;
+using SharedService.Models.Products;
 
 namespace SharedService.Implements
 {
@@ -82,6 +83,45 @@ namespace SharedService.Implements
         public static string DeleteEmployee(int id)
         {
             return $@"  DELETE FROM Employee WHERE EmployeeId = '" + id + "' ";
+        }
+
+        #endregion
+
+        #region ProductsController
+
+        public static string GetProducts()
+        {
+            return $@"  SELECT * FROM Products";
+        }
+
+        public static string AddProduct(ProductModel value)
+        {
+            return $@"  INSERT INTO Products 
+                            (name, description, price)
+                        VALUES
+                            (
+                                '" + value.name + @"'
+                                ,'" + value.description + @"'
+                                ,'" + value.price + @"'
+                            )
+                     ";
+        }
+
+        public static string UpdateProduct(ProductModel value)
+        {
+            return $@"  UPDATE Products SET
+                            name = '" + value.name + @"'
+                            ,description = '" + value.description + @"'
+                            ,price = '" + value.price + @"'
+                            where id = '" + value.id + @"'
+                     ";
+        }
+
+        public static string DeleteProduct(int id)
+        {
+            return $@"  DELETE FROM Products 
+                        WHERE id = " + id + @"  
+                     ";
         }
 
         #endregion
