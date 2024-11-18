@@ -5,8 +5,8 @@ using WebApiServices.BussinessLogic;
 
 namespace WebApiServices.Controllers.DepartmentController
 {
-    [Route("api/[Controller]")]
     [ApiController]
+    [Route("api/[Controller]")]
     public class DepartmentController : ControllerBase
     {
         private readonly DepartmentLogic _viewModel;

@@ -1,0 +1,62 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+@WebApiServices_HostAddress = https://localhost:7171
+@id=1
+@category=Test1 
+@user=TestUser
+
+GET {{WebApiServices_HostAddress}}/api/demo_appdotnet6
+
+###
+
+GET {{WebApiServices_HostAddress}}/api/demo_appdotnet6/{{id}}
+
+###
+
+GET {{WebApiServices_HostAddress}}/api/demo_appdotnet6/search/{{id}}/{{category}}
+
+###
+
+GET {{WebApiServices_HostAddress}}/api/demo_appdotnet6/query/product?id={{id}}&category={{category}}
+
+###
+
+GET {{WebApiServices_HostAddress}}/api/demo_appdotnet6/query/product/{{user}}?id={{id}}&category={{category}}
+
+###
+
+POST {{WebApiServices_HostAddress}}/api/demo_appdotnet6
+Content-Type: application/json
+
+{
+  "id": "1",
+  "name": "Test1",
+  "price": 100
+}
+
+###
+
+POST {{WebApiServices_HostAddress}}/api/demo_appdotnet6/add
+Content-Type: application/json
+
+{
+  "id": "1111",
+  "name": "Test1",
+  "price": 100
+}
+
+###
+
+PUT {{WebApiServices_HostAddress}}/api/demo_appdotnet6/{{id}}
+Content-Type: application/json
+
+{
+  "id": "1111",
+  "name": "Test1",
+  "price": 100
+}
+
+###
+
+DELETE {{WebApiServices_HostAddress}}/api/demo_appdotnet6/{{id}}
+
+###
