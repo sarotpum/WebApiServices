@@ -45,7 +45,7 @@ namespace WebApiServices.BussinessLogic
 
                         myReader = objCmd.ExecuteReader();
                         table.Load(myReader);
-                        table.Clone();
+                        myReader.Close();
                         objConn.Close();
                     }
                 }

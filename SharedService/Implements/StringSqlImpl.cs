@@ -1,5 +1,6 @@
 ﻿using SharedService.Models.DepartmentModel;
 using SharedService.Models.Employees;
+using SharedService.Models.MasterDetailsOrders;
 using SharedService.Models.Products;
 
 namespace SharedService.Implements
@@ -122,6 +123,87 @@ namespace SharedService.Implements
             return $@"  DELETE FROM Products 
                         WHERE id = " + id + @"  
                      ";
+        }
+
+        #endregion
+
+        #region MasterDetailsOrdersController
+
+        public static string GetItemDetails()
+        {
+            return $@"  SELECT * FROM ItemDetails ";
+        }
+
+        public static string GetCustomerDetails()
+        {
+            return $@"  SELECT * FROM CustomerDetails ";
+        }
+
+        public static string AddOrderDetail(OrdersDetailsModel order)
+        {
+            return $@"  INSERT INTO OrderDetails
+                            (OrderNo ,CustomerID ,PMethod ,GTotal)
+                        VALUES
+                            (
+                                '" + order.FormData.OrderNo + @"', 
+                                " + order.FormData.CustomerID + @", 
+                                '" + order.FormData.PMethod + @"', 
+                                " + order.FormData.GTotal + @"
+                            )
+                     ";
+        }
+
+        public static string MaxOrder()
+        {
+            return $@"  SELECT 
+                            MAX(OrderID) 
+                        FROM OrderDetails 
+                     ";
+        }
+
+        public static string AddOrdersDetailItems()
+        {
+            return $@"  INSERT INTO OrderItems
+                            (OrderID ,ItemID ,Quantity)
+                        VALUES
+                            (@OrderID, @ItemID, @Quantity)
+                     ";
+        }
+
+        public static string GetOrdersDetail()
+        {
+            return $@"  SELECT * FROM OrderDetails ";
+        }
+
+        public static string GetOrdersDetail(long id)
+        {
+            return $@"  SELECT * FROM OrderDetails WHERE OrderID = '{id}' ";
+        }
+
+        public static string GetOrdersItems(long id)
+        {
+            return $@"  SELECT 
+                            oi.OrderID,
+                            oi.OrderItemID, 
+                            it.ItemID, 
+                            it.Name AS ItemName, 
+                            it.Price, 
+                            oi.Quantity, 
+                            (CAST(oi.Quantity AS int) * CAST(it.Price AS float)) AS Total
+                        FROM OrderItems oi 
+                        INNER JOIN ItemDetails it on oi.ItemID = it.ItemID 
+                        WHERE OrderID = '{id}'
+                     ";
+        }
+
+        public static string DeleteOrderDetal(long id)
+        {
+            return $@"  DELETE FROM OrderDetails WHERE OrderID = '{id}' ";
+        }
+
+        public static string DeleteOrderItems(long id)
+        {
+            return $@"  DELETE FROM OrderItems WHERE OrderID = '{id}' ";
         }
 
         #endregion

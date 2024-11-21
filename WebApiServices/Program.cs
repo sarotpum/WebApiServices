@@ -78,6 +78,7 @@ void AddScopedConfig(WebApplicationBuilder builder)
     builder.Services.AddScoped<DepartmentLogic>();
     builder.Services.AddScoped<EmployeeLogic>();
     builder.Services.AddScoped<ProductsLogic>();
+    builder.Services.AddScoped<MasterDetailsOrdersLogic>();
 
     builder.Services.AddScoped<ILoggerService, LoggerServiceImpl>();
 }
