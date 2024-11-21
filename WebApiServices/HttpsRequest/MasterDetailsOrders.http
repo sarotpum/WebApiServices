@@ -1,0 +1,65 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+
+@WebApiServices_HostAddress = https://localhost:7171
+
+GET {{WebApiServices_HostAddress}}/api/masterdetailsorders/GetItemDetails
+
+### 
+
+GET {{WebApiServices_HostAddress}}/api/masterdetailsorders/GetCustomerDetails
+
+### 
+
+POST {{WebApiServices_HostAddress}}/api/masterdetailsorders/AddOrderDetail
+Content-Type: application/json
+
+{
+  "orderItems": [
+    {
+      "orderItemID": 0,
+      "orderID": 1,
+      "itemID": 1,
+      "quantity": 3,
+      "itemName": "",
+      "price": 0,
+      "total": 0
+    },
+    {
+      "orderItemID": 0,
+      "orderID": 1,
+      "itemID": 6,
+      "quantity": 2,
+      "itemName": "",
+      "price": 0,
+      "total": 0
+    },
+    {
+      "orderItemID": 0,
+      "orderID": 1,
+      "itemID": 8,
+      "quantity": 3,
+      "itemName": "",
+      "price": 0,
+      "total": 0
+    }
+  ],
+  "formData": {
+    "orderID": 0,
+    "orderNo": "623871",
+    "customerID": 1,
+    "pMethod": "Cash",
+    "gTotal": 27.98
+  }
+}
+
+###
+
+GET {{WebApiServices_HostAddress}}/api/masterdetailsorders/OrdersDetails
+
+###
+
+GET {{WebApiServices_HostAddress}}/api/masterdetailsorders/OrdersDetail/1
+ 
+###
+
+DELETE {{WebApiServices_HostAddress}}/api/masterdetailsorders/DeleteOrderDetail/1
