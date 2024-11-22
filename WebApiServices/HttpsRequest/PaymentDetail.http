@@ -1,0 +1,36 @@
+﻿@WebApiServices_HostAddress = https://localhost:7171
+
+GET {{WebApiServices_HostAddress}}/api/paymentdetail
+
+###
+
+@id=1
+GET {{WebApiServices_HostAddress}}/api/paymentdetail/{{id}}
+
+###
+
+POST {{WebApiServices_HostAddress}}/api/paymentdetail
+Content-Type: application/json
+
+{
+  "pmId": 3,
+  "cardOwnerName": "sarotTest",
+  "cardNumber": "1234567890123456",
+  "expiration": "5/5",
+  "cvv": "123"
+}
+
+###
+
+PUT {{WebApiServices_HostAddress}}/api/paymentdetail/{{id}}
+Content-Type: application/json
+
+{
+  //PaymentDetailModel
+}
+
+###
+
+DELETE {{WebApiServices_HostAddress}}/api/paymentdetail/{{id}}
+
+###
