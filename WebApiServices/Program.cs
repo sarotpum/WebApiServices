@@ -1,6 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Serialization;
 using Serilog;
+using SharedService.DBContext;
 using SharedService.LogProvider.Implement;
 using SharedService.LogProvider.Interface;
 using SharedService.Models;
@@ -42,6 +44,12 @@ builder.Services.AddControllersWithViews()
     .Json.ReferenceLoopHandling.Ignore)
     .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver
     = new DefaultContractResolver());
+
+// DBContext
+builder.Services.AddDbContext<DatasContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 var app = builder.Build();
 

@@ -1,0 +1,36 @@
+﻿@WebApiServices_HostAddress = https://localhost:7171
+
+GET {{WebApiServices_HostAddress}}/api/cards
+
+###
+
+GET {{WebApiServices_HostAddress}}/api/cards/67487919-ca63-40ad-ba6d-2bdc8ad427df
+
+###
+
+POST {{WebApiServices_HostAddress}}/api/cards
+Content-Type: application/json
+
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "cardholderName": "Sample1",
+  "cardNumber": "2233",
+  "expiryMonth": 1,
+  "expiryYear": 1,
+  "cvc": 1
+}
+
+###
+
+DELETE {{WebApiServices_HostAddress}}/api/cards/{id:guid}
+
+###
+
+PUT {{WebApiServices_HostAddress}}/api/cards/{id:guid}
+Content-Type: application/json
+
+{
+  //CardModel
+}
+
+###

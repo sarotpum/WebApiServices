@@ -1,4 +1,6 @@
 ﻿dotnet add package Microsoft.EntityFrameworkCore
+dotnet add {projectname} package Microsoft.EntityFrameworkCore
+
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet ef
@@ -27,3 +29,4 @@ dotnet ef database update
 dotnet watch run
 
 
+ref. https://medium.com/@varaphonn/%E0%B8%A1%E0%B8%B2%E0%B8%97%E0%B8%B3-entity-framework-core-migrations-%E0%B8%81%E0%B8%B1%E0%B8%99-2f09937f300d
