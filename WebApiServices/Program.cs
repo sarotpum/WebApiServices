@@ -1,4 +1,6 @@
+using DotnetExample.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Serialization;
 using Serilog;
@@ -9,10 +11,13 @@ using SharedService.Models;
 using System.Globalization;
 using WebApiServices.BussinessLogic;
 using WebApiServices.Middleware;
+using WebApiServices.Services.Implement;
+using WebApiServices.Services.Interface;
 
 CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 
 var builder = WebApplication.CreateBuilder(args);
+ConfigurationManager Configuration = builder.Configuration;
 
 // Add Scoped
 AddScopedConfig(builder);
@@ -51,6 +56,8 @@ builder.Services.AddDbContext<DatasContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddIoc(Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -88,7 +95,8 @@ void AddScopedConfig(WebApplicationBuilder builder)
     builder.Services.AddScoped<ProductsLogic>();
     builder.Services.AddScoped<MasterDetailsOrdersLogic>();
 
-    builder.Services.AddScoped<ILoggerService, LoggerServiceImpl>();
+    builder.Services.AddScoped<ILoggerService, LoggerServiceImpl>(); 
+    builder.Services.AddScoped<IBookRepository, BookRepository>();
 }
  
 void AddSingletion(WebApplicationBuilder builder)
