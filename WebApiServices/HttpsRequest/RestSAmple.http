@@ -1,0 +1,51 @@
+﻿@WebApiServices_HostAddress = https://localhost:7171
+
+GET {{WebApiServices_HostAddress}}/api/RestSample
+
+###
+
+GET {{WebApiServices_HostAddress}}/api/RestSample/1
+
+###
+ 
+POST {{WebApiServices_HostAddress}}/api/RestSample
+Content-Type: application/json
+
+{
+  "Id": 0,
+  "Name": "Test44"
+}
+
+###
+GET {{WebApiServices_HostAddress}}/api/restsample/RestSample2
+
+###
+ 
+POST {{WebApiServices_HostAddress}}/api/restsample/RestSample2
+Content-Type: application/json
+
+{
+  "Id": 1,
+  "Name": "Test1"
+}
+
+###
+ 
+GET {{WebApiServices_HostAddress}}/api/restsample/RestSample2/1
+
+###
+
+PUT {{WebApiServices_HostAddress}}/api/restsample/RestSample2/{id:int}?id={{id}}
+Content-Type: application/json
+
+{
+  "Id": 1,
+  "Name": "Test1"
+}
+
+###
+
+DELETE {{WebApiServices_HostAddress}}/api/restsample/RestDample2/1
+
+###
+ 

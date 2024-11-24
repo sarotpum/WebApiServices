@@ -3,6 +3,7 @@ using SharedService.Models.Books;
 using SharedService.Models.Card;
 using SharedService.Models.Contact;
 using SharedService.Models.PaymentDetail;
+using SharedService.Models.RestSample;
 
 namespace SharedService.DBContext
 {
@@ -22,5 +23,27 @@ namespace SharedService.DBContext
         public DbSet<PaymentDetailModel> PaymentDetails { get; set; }
         public DbSet<ContactModel> Contacts { get; set; }
         public DbSet<BookModel> Books { get; set; }
+        public DbSet<RestSampleModel> RestSamples { get; set; }
+
+
+        //===========================================================================================
+
+        //public DbSet<PaymentDetail> PaymentDetail { get; set; }
+
+        //public class AppDBContext : IdentityDbContext<AppUser, IdentityRole, string>
+        //{
+        //    public AppDBContext(DbContextOptions options) : base(options)
+        //    {
+        //    }
+        //}
+
+        //===========================================================================================
+
+        //public BookContext(DbContextOptions<BookContext> options)
+        //   : base(options)
+        //{
+        //    Database.EnsureCreated();
+        //}
+        //public DbSet<Book> Books { get; set; }
     }
 }

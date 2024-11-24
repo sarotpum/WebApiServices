@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SharedService.DBContext;
 
@@ -11,9 +12,11 @@ using SharedService.DBContext;
 namespace WebApiServices.DBContext.Migrations
 {
     [DbContext(typeof(DatasContext))]
-    partial class DatasContextModelSnapshot : ModelSnapshot
+    [Migration("20241124155846_RestMigration")]
+    partial class RestMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
