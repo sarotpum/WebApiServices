@@ -20,7 +20,7 @@ namespace WebApiServices.Controllers.PaymentDetailController
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PaymentDetailModel>>> GetPaymentDetails()
         {
-            return await _datasContext.PaymentDetail.ToListAsync();
+            return await _datasContext.PaymentDetails.ToListAsync();
         }
 
         // PUT: api/PaymentDetail/Create/5
@@ -51,7 +51,7 @@ namespace WebApiServices.Controllers.PaymentDetailController
         [HttpGet("{id}")]
         public async Task<ActionResult<PaymentDetailModel>> GetPaymentDetail(int id)
         {
-            var paymentDetail = await _datasContext.PaymentDetail.FindAsync(id);
+            var paymentDetail = await _datasContext.PaymentDetails.FindAsync(id);
             if (paymentDetail == null)
                 return NoContent();
 
@@ -62,7 +62,7 @@ namespace WebApiServices.Controllers.PaymentDetailController
         [HttpPost]
         public async Task<ActionResult<PaymentDetailModel>> PostPaymentDetail(PaymentDetailModel paymentDetail)
         {
-            await _datasContext.PaymentDetail.AddAsync(paymentDetail);
+            await _datasContext.PaymentDetails.AddAsync(paymentDetail);
             await _datasContext.SaveChangesAsync();
             return CreatedAtAction("GetPaymentDetail", new { id = paymentDetail.PMId }, paymentDetail);
         }
@@ -71,19 +71,19 @@ namespace WebApiServices.Controllers.PaymentDetailController
         [HttpDelete("{id}")]
         public async Task<ActionResult<PaymentDetailModel>> DeletePaymentDetail(int id)
         {
-            var paymentDetail = await _datasContext.PaymentDetail.FindAsync(id);
+            var paymentDetail = await _datasContext.PaymentDetails.FindAsync(id);
 
             if (paymentDetail == null)
                 NoContent();
 
-            _datasContext.PaymentDetail.Remove(paymentDetail);
+            _datasContext.PaymentDetails.Remove(paymentDetail);
             await _datasContext.SaveChangesAsync();
             return paymentDetail;
         }
 
         private bool PaymentDetailExists(int id)
         {
-            return _datasContext.PaymentDetail.Any(x => x.PMId == id);
+            return _datasContext.PaymentDetails.Any(x => x.PMId == id);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SharedService.Models.Card;
+using SharedService.Models.Contact;
 using SharedService.Models.PaymentDetail;
 
 namespace SharedService.DBContext
@@ -17,6 +18,7 @@ namespace SharedService.DBContext
         }
 
         public DbSet<CardModel> Cards { get; set; }
-        public DbSet<PaymentDetailModel> PaymentDetail { get; set; }
+        public DbSet<PaymentDetailModel> PaymentDetails { get; set; }
+        public DbSet<ContactModel> Contacts { get; set; }
     }
 }

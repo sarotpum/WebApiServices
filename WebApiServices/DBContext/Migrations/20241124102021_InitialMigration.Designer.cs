@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SharedService.DBContext;
 
 #nullable disable
 
-namespace WebApiServices.DBContext.Migrations.Card
+namespace WebApiServices.DBContext.Migrations
 {
     [DbContext(typeof(DatasContext))]
-    partial class DatasContextModelSnapshot : ModelSnapshot
+    [Migration("20241124102021_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,6 +53,33 @@ namespace WebApiServices.DBContext.Migrations.Card
                     b.ToTable("Cards");
                 });
 
+            modelBuilder.Entity("SharedService.Models.Contact.ContactModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contacts");
+                });
+
             modelBuilder.Entity("SharedService.Models.PaymentDetail.PaymentDetailModel", b =>
                 {
                     b.Property<int>("PMId")
@@ -76,7 +106,7 @@ namespace WebApiServices.DBContext.Migrations.Card
 
                     b.HasKey("PMId");
 
-                    b.ToTable("PaymentDetail");
+                    b.ToTable("PaymentDetails");
                 });
 #pragma warning restore 612, 618
         }
