@@ -26,7 +26,11 @@ PUT {{WebApiServices_HostAddress}}/api/paymentdetail/{{id}}
 Content-Type: application/json
 
 {
-  //PaymentDetailModel
+  "pmId": 1,
+  "cardOwnerName": "sarotTest",
+  "cardNumber": "1234567890123456",
+  "expiration": "5/5",
+  "cvv": "123"
 }
 
 ###

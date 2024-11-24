@@ -30,7 +30,11 @@ PUT {{WebApiServices_HostAddress}}/api/cards/{id:guid}
 Content-Type: application/json
 
 {
-  //CardModel
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "cardholderName": "Sample1",
+  "cardNumber": "2233",
+  "expiryMonth": 1,
+  "expiryYear": 1,
+  "cvc": 1
 }
-
 ###

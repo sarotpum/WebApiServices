@@ -1,0 +1,39 @@
+﻿@WebApiServices_HostAddress = https://localhost:7171
+
+GET {{WebApiServices_HostAddress}}/api/book
+
+###
+
+GET {{WebApiServices_HostAddress}}/api/book/3
+
+###
+
+POST {{WebApiServices_HostAddress}}/api/book
+Content-Type: application/json
+
+{
+    "Id": 0,
+    "Title": "Test1",
+    "Author": "Test1",
+    "Description": "Test1"
+}
+
+###
+
+@id=0
+PUT {{WebApiServices_HostAddress}}/api/book?id=3
+Content-Type: application/json
+
+{ 
+  "Id": 3,
+  "Title": "Test33",
+  "Author": "Test33",
+  "Description": "Test33"
+}
+
+
+###
+
+DELETE {{WebApiServices_HostAddress}}/api/book/3
+
+###
