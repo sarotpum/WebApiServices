@@ -1,0 +1,31 @@
+﻿@WebApiServices_HostAddress = https://localhost:7171
+
+GET {{WebApiServices_HostAddress}}/api/contacts
+
+###
+
+@id=14a6442a-2b33-4899-8844-8775b91eeca1
+GET {{WebApiServices_HostAddress}}/api/Contacts/{{id}}
+
+###
+
+POST {{WebApiServices_HostAddress}}/api/contacts
+Content-Type: application/json
+
+{
+    "Id": "14a6442a-2b33-4899-8844-8775b91eeca2",
+    "FullName": "sarot1",
+    "Email": "sr1@hotmail.com",
+    "Phone": "0844578559",
+    "Address": "14 s1"
+ }
+
+###
+
+PUT {{WebApiServices_HostAddress}}/api/Contacts/{{id}}
+
+###
+
+DELETE {{WebApiServices_HostAddress}}/api/Contacts/{{id}}
+
+###

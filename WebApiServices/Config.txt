@@ -6,8 +6,8 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet ef
 dotnet tool install --global dotnet-ef
 dotnet add package Microsoft.EntityFrameworkCore.Identity.EntityFrameworkCore
-
-dotnet ef migrations add InitialMigration --output-dir "Data/Migrations"
+ 
+dotnet ef migrations add InitialMigration --output-dir "DBContext/Migrations/paymentDetail"
 dotnet ef database update
 
 dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
