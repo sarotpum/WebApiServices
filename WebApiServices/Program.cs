@@ -1,7 +1,8 @@
 using DotnetExample.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using Serilog;
 using SharedService.DBContext;
@@ -9,6 +10,7 @@ using SharedService.LogProvider.Implement;
 using SharedService.LogProvider.Interface;
 using SharedService.Models;
 using System.Globalization;
+using System.Text;
 using WebApiServices.BussinessLogic;
 using WebApiServices.Middleware;
 using WebApiServices.Services.Implement;
@@ -39,8 +41,6 @@ builder.Services.AddSwaggerGen();
 // AppSettings
 builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
  .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true);
- 
-builder.Services.Configure<AppSettings>(builder.Configuration);
 
 //JSON Serializer
 builder.Services.AddControllersWithViews()
@@ -55,6 +55,29 @@ builder.Services.AddDbContext<DatasContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+//builder.Services.AddDbContext<DatasContext>(o => o.UseSqlite("Data source=books.db"));
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    string jwt = Configuration["JWTConfig:Key"] ?? string.Empty;
+    var key = Encoding.ASCII.GetBytes(jwt);
+    var issuer = Configuration["JWTConfig:Issuer"];
+    var audience = Configuration["JWTConfig:Audience"];
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        RequireExpirationTime = true,
+        ValidIssuer = issuer,
+        ValidAudience = audience,
+    };
+});
+
+builder.Services.Configure<AppSettings>(builder.Configuration);
+builder.Services.Configure<JWTConfig>(Configuration.GetSection("JWTConfig"));
 
 builder.Services.AddIoc(Configuration);
 
