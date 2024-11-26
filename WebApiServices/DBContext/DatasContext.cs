@@ -4,6 +4,7 @@ using SharedService.Models.Card;
 using SharedService.Models.Contact;
 using SharedService.Models.PaymentDetail;
 using SharedService.Models.RestSample;
+using SharedService.Models.Student;
 
 namespace SharedService.DBContext
 {
@@ -24,6 +25,7 @@ namespace SharedService.DBContext
         public DbSet<ContactModel> Contacts { get; set; }
         public DbSet<BookModel> Books { get; set; }
         public DbSet<RestSampleModel> RestSamples { get; set; }
+        public DbSet<StudentModel> Students { get; set; }
 
 
         //===========================================================================================

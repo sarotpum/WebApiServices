@@ -1,0 +1,23 @@
+﻿@using SharedService.Models.Student
+@model BooksModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SetBookDetail</title>
+</head>
+<body>
+    <div>
+        <h1>Book Details</h1>
+        <h3>Book Number : @Model.BookNumber</h3>
+        <h3>Book Name : @Model.BookName</h3>
+        <h3>Book Auther : @Model.BookAuther</h3>
+        <h3>Book Price : @Model.Price</h3>
+    </div>
+</body>
+</html>

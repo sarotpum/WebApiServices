@@ -1,0 +1,27 @@
+﻿@using SharedService.Models.Student
+@model BooksModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetBookDetail</title>
+</head>
+<body>
+    <form action="Book/SetBookDetail" method="post">
+        <label>BookNumber</label>
+        <input type="text" name="BookNumber" placeholder="Book Number.." />
+        <br />
+        <label>BookName</label>
+        <input type="text" name="BookName" placeholder="Book Name.." />
+        <br />
+        <label>BookAuthor</label>
+        <input type="text" name="BookAuthor" placeholder="Book Author.." />
+        <br />
+        <label>BookPrice</label>
+        <input type="text" name="BookPrice" placeholder="Book Price.." />
+        <br /><br />
+        <input type="submit" value="Save Book" />
+    </form>
+</body>
+</html>
