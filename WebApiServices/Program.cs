@@ -15,6 +15,7 @@ using WebApiServices.BussinessLogic;
 using WebApiServices.Middleware;
 using WebApiServices.Services.Implement;
 using WebApiServices.Services.Interface;
+using AutoMapper;
 
 CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 
@@ -37,6 +38,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add services to the container.
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 // AppSettings
 builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -120,6 +124,7 @@ void AddScopedConfig(WebApplicationBuilder builder)
 
     builder.Services.AddScoped<ILoggerService, LoggerServiceImpl>(); 
     builder.Services.AddScoped<IBookRepository, BookRepository>();
+    builder.Services.AddScoped<ICharacterService, CharacterService>();
 }
  
 void AddSingletion(WebApplicationBuilder builder)

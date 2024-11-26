@@ -5,6 +5,7 @@ using SharedService.Models.Contact;
 using SharedService.Models.PaymentDetail;
 using SharedService.Models.RestSample;
 using SharedService.Models.Student;
+using SharedService.Models.Tlous;
 
 namespace SharedService.DBContext
 {
@@ -26,7 +27,12 @@ namespace SharedService.DBContext
         public DbSet<BookModel> Books { get; set; }
         public DbSet<RestSampleModel> RestSamples { get; set; }
         public DbSet<StudentModel> Students { get; set; }
-
+        public DbSet<CharacterModel> Characters { get; set; }
+        public DbSet<BackpackModel> Backpacks { get; set; }
+        public DbSet<WeaponModel> Weapons { get; set; }
+        public DbSet<FactionModel> Factions { get; set; }
+        public DbSet<UserModel> Users { get; set; }
+        public DbSet<SharedService.Models.Characters.CharacterModel> Characters2 => Set<SharedService.Models.Characters.CharacterModel>();
 
         //===========================================================================================
 

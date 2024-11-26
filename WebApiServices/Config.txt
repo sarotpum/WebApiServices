@@ -34,13 +34,29 @@ ref. https://medium.com/@varaphonn/%E0%B8%A1%E0%B8%B2%E0%B8%97%E0%B8%B3-entity-f
 
 
 ---------------------------------------------------------------
-
 Dotnet7-Relationships
 
 dotnet add package Microsoft.EntityFrameworkCore
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.Tools
+
+dotnet tool install --global dotnet-ef
+
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+
+
+---------------------------------------------------------------
+CharacterController
+
+dotnet new gitignore
+
+dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection
+
+dotnet add package Microsoft.EntityFrameworkCore 
+dotnet add package Microsoft.EntityFrameworkCore.SQLServer
+dotnet add package Microsoft.EntityFrameworkCore.Design
 
 dotnet tool install --global dotnet-ef
 
